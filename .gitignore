@@ -20,5 +20,6 @@ local.properties
 .project
 
 *.iml
+SupportPreferencesFragment.iml
 
 build

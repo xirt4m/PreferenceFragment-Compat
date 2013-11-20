@@ -8,8 +8,12 @@ buildscript {
     }
 }
 
+//Sonatype publishing configuration from
+//http://www.vandalsoftware.com/post/52468430435/publishing-an-android-library-aar-to-a-maven
+
 apply plugin: 'android-library'
 apply plugin: 'android-maven'
+apply plugin: 'signing'
 
 version = '0.1'
 group = 'kolavar.android.support'
@@ -44,5 +48,69 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+}
+
+configurations {
+    archives {
+        extendsFrom configurations.default
+    }
+}
+
+signing {
+    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: sonatypeRepo) {
+            authentication(userName: sonatypeUsername,
+                    password: sonatypePassword)
+        }
+
+        pom.project {
+            name 'Android Support PreferenceFragment'
+            packaging 'aar'
+            description 'PreferenceFragment for versions prior to Honeycomb'
+            url 'https://github.com/Machinarius/preferencefragment'
+
+            scm {
+                url 'scm:git@github.com/Machinarius/preferencefragment'
+                connection 'scm:git@github.com/Machinarius/preferencefragment'
+                developerConnection 'scm:git@github.com/Machinarius/preferencefragment'
+            }
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'kolavar'
+                    name 'kolavar'
+                    email 'kolavar@unknown.com'
+                }
+
+                developer {
+                    id 'androidpmmedia'
+                    name 'androidpmmedia'
+                    email 'kolavar@unknown.com'
+                }
+
+                developer {
+                    id 'machinarius'
+                    name 'Germán Valencia'
+                    email 'machinarius02@gmail.com'
+                }
+            }
+        }
     }
 }

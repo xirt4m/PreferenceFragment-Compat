@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.support.v4.preference;
+package com.github.kolavar.preferencefragment;
 
 import android.content.Intent;
 import android.os.Bundle;

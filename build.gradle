@@ -10,16 +10,18 @@ buildscript {
 
 //Sonatype publishing configuration from
 //http://www.vandalsoftware.com/post/52468430435/publishing-an-android-library-aar-to-a-maven
+//This link succesfully made it so this project could install to the local repo...
+//http://www.flexlabs.org/2013/06/using-local-aar-android-library-packages-in-gradle-builds
 
 apply plugin: 'android-library'
 apply plugin: 'android-maven'
 apply plugin: 'signing'
 
 version = '0.1'
-group = 'kolavar.android.support'
+group = 'com.github.kolavar'
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.+@jar'
+    compile 'com.android.support:support-v4:18.0.0'
 }
 
 android {

@@ -96,19 +96,19 @@ uploadArchives {
                 developer {
                     id 'kolavar'
                     name 'kolavar'
-                    email 'kolavar@unknown.com'
+                    email 'kolavar@unknown.com' //Couldn't find more details on these users
                 }
 
                 developer {
                     id 'androidpmmedia'
                     name 'androidpmmedia'
-                    email 'kolavar@unknown.com'
+                    email 'kolavar@unknown.com' //Couldn't find more details on these users
                 }
 
                 developer {
                     id 'machinarius'
                     name 'Germán Valencia'
-                    email 'machinarius02@gmail.com'
+                    email 'machinarius92@gmail.com'
                 }
             }
         }

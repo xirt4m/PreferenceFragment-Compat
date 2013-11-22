@@ -17,10 +17,12 @@ repositories {
 Add the dependency to your build.gradle file like this:
 
 ```groovy
+compile 'com.android.support:support-v4:18.0.0'
 compile 'com.github.machinarius:preferencefragment:0.1@aar'
 ```
 
 The @aar suffix is a workaround for a packaging problem, next release won't be affected by this.
+The support library dependency is manually written here because the @aar suffix will block transitive dependencies. Again, next release won't have this issue
 
 How to use it?
 ===================================

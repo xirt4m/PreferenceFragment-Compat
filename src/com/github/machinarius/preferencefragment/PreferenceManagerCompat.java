@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.kolavar.preferencefragment;
+package com.github.machinarius.preferencefragment;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

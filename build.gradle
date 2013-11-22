@@ -4,21 +4,15 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.6.+'
-        classpath 'com.github.dcendents:android-maven-plugin:1.0'
     }
 }
 
-//Sonatype publishing configuration from
-//http://www.vandalsoftware.com/post/52468430435/publishing-an-android-library-aar-to-a-maven
-//This link succesfully made it so this project could install to the local repo...
-//http://www.flexlabs.org/2013/06/using-local-aar-android-library-packages-in-gradle-builds
-
 apply plugin: 'android-library'
-apply plugin: 'android-maven'
+apply plugin: 'maven'
 apply plugin: 'signing'
 
-version = '0.1'
-group = 'com.github.kolavar'
+version = '0.1.1'
+group = 'com.github.machinarius'
 
 dependencies {
     compile 'com.android.support:support-v4:18.0.0'
@@ -53,19 +47,38 @@ android {
     }
 }
 
-configurations {
-    archives {
-        extendsFrom configurations.default
-    }
+ext {
+    artifactId = 'preferencefragment'
 }
 
 signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
     sign configurations.archives
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.allJava
+}
+
+task androidJavadocsJar(type: Jar) {
+    classifier = 'javadoc'
+    //basename = project.artifactId
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    //basename = project.artifactId
+    from android.sourceSets.main.allSource
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
 }
 
 uploadArchives {
     configuration = configurations.archives
+
     repositories.mavenDeployer {
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
@@ -73,6 +86,10 @@ uploadArchives {
             authentication(userName: sonatypeUsername,
                     password: sonatypePassword)
         }
+
+        pom.groupId = 'com.github.machinarius'
+        pom.artifactId = 'preferencefragment'
+        pom.version = '0.1.1'
 
         pom.project {
             name 'Android Support PreferenceFragment'

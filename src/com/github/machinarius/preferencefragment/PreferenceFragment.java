@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.kolavar.preferencefragment;
+package com.github.machinarius.preferencefragment;
 
 import android.content.Intent;
 import android.os.Bundle;

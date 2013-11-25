@@ -17,15 +17,15 @@ repositories {
 Add the dependency to your build.gradle file like this:
 
 ```groovy
-compile 'com.github.machinarius:preferencefragment:0.1@aar'
+compile 'com.github.machinarius:preferencefragment:0.1.1'
 ```
-
-The @aar suffix is a workaround for a packaging problem, next release won't be affected by this.
+The fix has been deployed, no more @aar suffix
 
 How to use it?
 ===================================
 
 Just extend PreferenceFragment and follow the Settings developer guide like if this layer wasn't even there to begin with.
+
 http://developer.android.com/guide/topics/ui/settings.html
 
 Roadmap

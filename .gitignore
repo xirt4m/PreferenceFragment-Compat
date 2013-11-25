@@ -23,3 +23,6 @@ local.properties
 SupportPreferencesFragment.iml
 
 build
+
+.idea/
+.gradle/

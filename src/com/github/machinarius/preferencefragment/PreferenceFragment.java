@@ -25,7 +25,6 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.support.v4.app.Fragment;
-import android.support.v4.preferencefragment.R;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;

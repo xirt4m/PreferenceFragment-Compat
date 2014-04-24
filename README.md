@@ -3,6 +3,11 @@ Support PreferenceFragment
 
 Unofficial PreferenceFragment compatibility layer for Android 1.6 and up.
 
+###About the status of the library
+This project is not abandoned, i just haven't had time to spare for it; I accept pull-requests and all the good Github open-source stuff though. 
+
+It is in my plans to actually give it the holo love it deserves [soon](http://www.wowwiki.com/Soon) (tm).
+
 How to reference this library?
 ====================================
 
